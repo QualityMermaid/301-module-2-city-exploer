@@ -9,9 +9,11 @@ function App() {
     const [map, setMap] = useState("");
     const [errorMessage, setErrorMessage] = useState("")
 
+
     function handleSearch(event) {
         setSearchQuery(event.target.value);
     }
+
 
     async function getLocation(event) {
         try {

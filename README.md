@@ -1,7 +1,7 @@
 # Project Name
 
 **Author**: Jessica Bane
-**Version**: 1.0.1
+**Version**: 1.0.2
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
@@ -58,3 +58,13 @@ Start time: 10pm
 Finish time: 10.20pm
 
 Actual time needed to complete: 20mins
+
+4. 
+Name of feature: Weather check
+Estimate of time needed to complete: 2h
+
+Start time:7.30pm (stopped for the evening after 30mins)
+
+Finish time:
+
+Actual time needed to complete: 
