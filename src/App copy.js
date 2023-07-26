@@ -15,45 +15,47 @@ function App() {
         setSearchQuery(event.target.value);
     }
 
-    async function getCityWeather({lat, lon}){
-        console.log("LAT HERE" + lat)
-        console.log(lon)
-            const API = `http://localhost:8082/weather?lat=${lat}&lon=${lon}`
-            console.log(API)
-            const res = await axios.get(API)
-            console.log(res)
-            setWether(res.data)
+    async function handleCitySearch(){
+        try{
+            const res = await axios.get(`http://localhost:8082/weather?searchQuery=${searchQuery}`)
+            console.log(searchQuery)
+            
+            // console.log(cityWeather)
+            // setWether(res.data)
             console.log(weather)
+
+            setErrorMessage("")
+        } catch(error) {
+            setWether("")
+            setErrorMessage(error)
+        }
     }
 
+
+
+
     async function getLocation(event) {
-        setWether([])
+        handleCitySearch()
         try {
-            event.preventDefault()
             setErrorMessage("")
+            event.preventDefault();
+            event.target.input.value = "";
             const API = `https://eu1.locationiq.com/v1/search?key=${process.env.REACT_APP_API_KEY}&q=${searchQuery}&format=json`;
             const res = await axios.get(API);
             setLocation(res.data[0]);
-            console.log(res.data[0])
-            // handleMap(res.data[0]);
-            // console.log(map)
-            getCityWeather(res.data[0])
-            event.target.query.value = "";
+            handleMap(res.data[0]);
         } catch (error) {
             // error.code = "STATUS"
             console.log(error);
             setErrorMessage(`${error}`)
             setLocation({})
             setMap("")
-            setWether("")
         }
     }
 
     function handleMap(data) {
         const API = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${data.lat},${data.lon}&zoom=10`;
         setMap(API);
-        console.log("Setting map")
-        console.log(map)
     }
 
     return (
@@ -71,7 +73,7 @@ function App() {
             {/* <p>Latitude: {location.lat}</p> */}
             {/* <p>Longitude: {location.lon}</p> */}
             {map && <img className="mapImg" src={map} alt="map" />}
-            {weather.length > 0 && <Weather weather={weather} city={searchQuery}/>}  
+            <Weather forecastData={weather} city={searchQuery}/>  
         </div>
         </>
     );
