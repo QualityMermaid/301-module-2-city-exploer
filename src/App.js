@@ -68,12 +68,12 @@ function App() {
         </div>
         <div className="searchInfo">
             {/* <p className="errorMessage">{errorMessage}</p> */}
-            <p>{errorMessage}</p>
-            <p>{location.display_name}</p>
-            {/* <p>Latitude: {location.lat}</p> */}
-            {/* <p>Longitude: {location.lon}</p> */}
+            {errorMessage && <p>{errorMessage}</p>}
+            {location && <p>{location.display_name}</p>}
+            <div className="returnedData">
             {map && <img className="mapImg" src={map} alt="map" />}
             {weather.length > 0 && <Weather weather={weather} city={cityName}/>}  
+            </div>
         </div>
         </>
     );

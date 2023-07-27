@@ -1,6 +1,30 @@
-.weatherButton{
-    background-color: blue;
-    color: white;
-    font-size: 1.1rem;
+.weather-div{
+    margin: auto;
+    padding: 1rem;
+    text-align: center;
 
+}
+.weatherContainer{
+    display: grid;
+    column-gap: 30px;
+    grid-template-columns: auto auto auto;
+}
+.weatherData{
+    margin: 1rem 0;
+    padding: 0 1rem;
+    background-color: antiquewhite;
+
+}
+
+.date{
+    text-decoration: underline ;
+}
+
+.weatherDescription{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h2{
+    margin: auto;
+    font-size: 2rem;
 }

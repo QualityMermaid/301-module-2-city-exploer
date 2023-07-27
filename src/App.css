@@ -1,9 +1,15 @@
 *{
+  box-sizing: border-box;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .mapImg{
   border: 2px solid black;
+  margin: auto;
+  grid-column: 1/2;
+}
+.weather{
+  grid-column: 2 / 2;
 }
 
 .errorMessage{
@@ -13,4 +19,9 @@
   font-weight: 700;
   margin: 1rem;
   padding: 1rem;
+}
+
+.returnedData{
+  display: grid;
+  grid-column: auto auto;
 }

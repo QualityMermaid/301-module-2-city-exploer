@@ -13,18 +13,19 @@ export default function Weather({weather, city}) {
             console.log(day.weather.description)
 
             return (
-                <div key={day.datetime}>
-                    <h3> {day.datetime}: </h3>
-                    <p>{description}</p>
+                <div className='weatherData' key={day.datetime}>
+                    <h3 className='date'> {day.datetime} </h3>
+                    <p className='weatherDescription'>{description}</p>
                 </div>
             )
         })
 
         return (
-            <div className="weather-container">
-                <h2>Weather Forecast</h2>
-                <h3>{cityName}</h3>
+            <div className="weather-div">
+                <h2>Weather Forecast for {cityName}</h2>
+                <div className='weatherContainer'>
                 {forcastWeather}
+                </div>
             </div>
         )
     }catch(error){
