@@ -9,6 +9,7 @@ function App() {
     const [map, setMap] = useState("");
     const [errorMessage, setErrorMessage] = useState("")
     const [weather, setWether] = useState([])
+    const [cityName, setCityName] = useState("")
 
 
     function handleSearch(event) {
@@ -18,12 +19,12 @@ function App() {
     async function getCityWeather({lat, lon}){
         console.log("LAT HERE" + lat)
         console.log(lon)
-            const API = `http://localhost:8082/weather?lat=${lat}&lon=${lon}`
+            // const API = `http://localhost:8082/weather?lat=${lat}&lon=${lon}`
+            const API = `https://three01-city-explorer-api.onrender.com/weather?lat=${lat}&lon=${lon}`
             console.log(API)
             const res = await axios.get(API)
             console.log(res)
             setWether(res.data)
-            console.log(weather)
     }
 
     async function getLocation(event) {
@@ -33,12 +34,13 @@ function App() {
             setErrorMessage("")
             const API = `https://eu1.locationiq.com/v1/search?key=${process.env.REACT_APP_API_KEY}&q=${searchQuery}&format=json`;
             const res = await axios.get(API);
-            setLocation(res.data[0]);
-            console.log(res.data[0])
-            // handleMap(res.data[0]);
+            const newData = res.data[0]
+            console.log(newData)
+            setLocation(newData);
+            handleMap(newData);
             // console.log(map)
-            getCityWeather(res.data[0])
-            event.target.query.value = "";
+            getCityWeather(newData)
+            setCityName(searchQuery)
         } catch (error) {
             // error.code = "STATUS"
             console.log(error);
@@ -71,7 +73,7 @@ function App() {
             {/* <p>Latitude: {location.lat}</p> */}
             {/* <p>Longitude: {location.lon}</p> */}
             {map && <img className="mapImg" src={map} alt="map" />}
-            {weather.length > 0 && <Weather weather={weather} city={searchQuery}/>}  
+            {weather.length > 0 && <Weather weather={weather} city={cityName}/>}  
         </div>
         </>
     );
