@@ -1,0 +1,10 @@
+header{
+    padding: .5rem;
+}
+
+
+h1{
+    font-size: 4rem;
+    margin: .5rem;
+    color: rgb(0, 125, 8);
+}

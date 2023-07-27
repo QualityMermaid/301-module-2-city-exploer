@@ -3,6 +3,21 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+
+.form{
+  padding: .2rem;
+}
+
+.formInput{
+  font-size: 1.2rem;
+}
+
+.button{
+  margin-left: 1rem;
+  background-color: aquamarine;
+  font-size: 1.2rem;
+}
+
 .mapImg{
   border: 2px solid black;
   margin: auto;
@@ -24,4 +39,8 @@
 .returnedData{
   display: grid;
   grid-column: auto auto;
+}
+
+#locationName{
+  text-align: center;
 }
