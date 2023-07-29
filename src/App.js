@@ -46,7 +46,6 @@ function App() {
             setLocation(newData);
             handleMap(newData);
             getCityWeather(newData)
-            // setCityName(searchQuery)
         } catch (error) {
             setErrorMessage(`${error}`)
             setLocation({})
@@ -70,7 +69,6 @@ function App() {
             </form>
         </div>
         <div className="searchInfo">
-            {/* <p className="errorMessage">{errorMessage}</p> */}
             {errorMessage && <p className="errorMessage">{errorMessage}</p>}
             {location && <p id="locationName">{location.display_name}</p>}
             <div className="returnedData">
